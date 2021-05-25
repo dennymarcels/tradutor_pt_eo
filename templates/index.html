@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Super Tradutor Português - Esperanto</title>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+	<h2>Entre o texto em português: </h2>
+	<input type="text" id="texto" value="Este é um exemplo"><br>
+	</form>
+	<h2>Texto traduzido para o esperanto (!):</h2>
+	<p id="traducao">Jen ekzemplo</p>
+	<script>
+	$("#texto").keyup(function () {
+		var texto = $(this).val();
+		
+		$.ajax({
+			url: "/response",
+			type: "get",
+			data: {jsdata: texto},
+			success: function(response) {
+				$("#traducao").html(response);
+			}
+		});
+	});
+	</script>
+</body>
+</html>
